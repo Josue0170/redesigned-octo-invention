@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>¿Me perdonas?</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin-top: 50px;
+            background-image: url(daisies-1403041_1920.jpg);
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            color: #fff;
+        }
+        .opciones-container {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+        .opcion {
+            border: 2px solid #ffffff;
+            padding: 20px;
+            border-radius: 10px;
+            background-color: rgb(92, 78, 220);
+            color: #fff;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .opcion input {
+            display: none;
+        }
+        .opcion label {
+            display: block;
+            cursor: pointer;
+        }
+        button {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            background-color: rgb(92, 78, 220);
+            color: #fff;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        button:hover {
+            background-color: rgb(72, 58, 200); /* Tono más oscuro para el hover */
+        }
+    </style>
+</head>
+<body>
+    <h1>¿Me perdonas?</h1>
+    <form id="eleccionForm">
+        <div class="opciones-container">
+            <div class="opcion" id="opcion-si">
+                <label>
+                    <input type="radio" name="eleccion" value="sí"> Sí
+                </label>
+            </div>
+            <div class="opcion" id="opcion-no">
+                <label>
+                    <input type="radio" name="eleccion" value="no"> No
+                </label>
+            </div>
+        </div>
+        <button type="submit">Enviar</button>
+    </form>
+    <p id="resultado"></p>
+
+    <script>
+        document.getElementById('eleccionForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            const eleccion = document.querySelector('input[name="eleccion"]:checked');
+
+            if (eleccion) {
+                if (eleccion.value === 'sí') {
+                    alert("Sabia que lo harias mi amor :3");
+                    window.location.href = "poema.html";
+                } else {
+                    alert("Se que solo queria ver que pasaba si elegias no, gracias por perdonarme :3");
+                }
+            } else {
+                alert("Por favor, elige una opción amor mio");
+            }
+        });
+
+        // Añadir estilo al seleccionar una opción
+        document.querySelectorAll('.opcion').forEach(function(opcion) {
+            opcion.addEventListener('click', function() {
+                document.querySelectorAll('.opcion').forEach(function(op) {
+                    op.style.backgroundColor = 'rgb(92, 78, 220)';
+                });
+                opcion.style.backgroundColor = 'rgb(72, 58, 200)'; // Un tono más oscuro para indicar selección
+                opcion.querySelector('input').checked = true;
+            });
+        });
+    </script>
+</body>
+</html>
